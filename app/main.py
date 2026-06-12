@@ -25,17 +25,13 @@ def main():
     print("SELETOR ADAPTATIVO DE ALGORITMOS")
     print("=" * 50)
 
-    tamanho = int(
-        input(
-            "\nInforme o tamanho do dataset: "
-        )
+    requisitos = obter_requisitos()
+
+    dados = gerar_aleatorio(
+        requisitos["quantidade_elementos"]
     )
 
-    dados = gerar_aleatorio(tamanho)
-
-    analisador = AnalisadorCaracteristicas(
-        dados
-    )
+    analisador = AnalisadorCaracteristicas(dados)
 
     caracteristicas = analisador.analisar()
 
@@ -66,9 +62,57 @@ def main():
         f"{caracteristicas['amplitude']}"
     )
 
-    print("\nQuestionário:")
+    COMPLEXIDADES = {
 
-    requisitos = obter_requisitos()
+        "Bubble Sort": {
+            "tempo": "O(n²)",
+            "espaco": "O(1)"
+        },
+
+        "Selection Sort": {
+            "tempo": "O(n²)",
+            "espaco": "O(1)"
+        },
+
+        "Insertion Sort": {
+            "tempo": "O(n²)",
+            "espaco": "O(1)"
+        },
+
+        "Merge Sort": {
+            "tempo": "O(n log n)",
+            "espaco": "O(n)"
+        },
+
+        "Quick Sort": {
+            "tempo": "O(n log n)",
+            "espaco": "O(log n)"
+        },
+
+        "Heap Sort": {
+            "tempo": "O(n log n)",
+            "espaco": "O(1)"
+        },
+
+        "Busca Sequencial": {
+            "tempo": "O(n)",
+            "espaco": "O(1)"
+        },
+
+        "Busca Binária": {
+            "tempo": "O(log n)",
+            "espaco": "O(1)"
+        },
+
+        "Busca Hash": {
+            "tempo": "O(1)",
+            "espaco": "O(n)"
+        }
+    }
+
+    # print("\nQuestionário:")
+
+    # requisitos = obter_requisitos()
 
     motor = MotorDecisao()
 
@@ -77,23 +121,37 @@ def main():
         requisitos
     )
 
+    complexidade = COMPLEXIDADES.get(
+        algoritmo,
+        {
+        "tempo": "Desconhecida",
+        "espaco": "Desconhecida"
+        }
+    )
+
     print("\n" + "=" * 50)
     print("RESULTADO")
     print("=" * 50)
 
     print(
-        f"\nAlgoritmo recomendado: "
-        f"{algoritmo}"
+        f"\nAlgoritmo recomendado: {algoritmo}"
     )
 
     print(
-        f"Pontuação: "
-        f"{scores[algoritmo]}"
+        f"Pontuação: {scores[algoritmo]}"
+    )
+
+    print(
+        f"Complexidade de Tempo: "
+        f"{complexidade['tempo']}"
+    )
+
+    print(
+        f"Complexidade de Espaço: "
+        f"{complexidade['espaco']}"
     )
 
     exibir_ranking(scores)
-
-    print("\nFim da análise.")
 
 
 if __name__ == "__main__":
