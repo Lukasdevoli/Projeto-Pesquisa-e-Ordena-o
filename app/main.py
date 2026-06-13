@@ -1,9 +1,8 @@
 from analizador.caracteristicas import AnalisadorCaracteristicas
-from analizador.questionario import obter_requisitos
+from analizador.questionario import obter_requisitos, obter_requisitos_direto
 from analizador.motor_decisao import MotorDecisao
 
 from utils.gerador import gerar_aleatorio
-
 
 def exibir_ranking(scores):
 
@@ -80,21 +79,81 @@ def obter_avisos(algoritmo, requisitos):
 
     return avisos
 
-def main():
+def ler_array_usuario():
 
-    print("=" * 50)
-    print("SELETOR ADAPTATIVO DE ALGORITMOS")
-    print("=" * 50)
-
-    requisitos = obter_requisitos()
-
-    dados = gerar_aleatorio(
-        requisitos["quantidade_elementos"]
+    entrada = input(
+        "\nDigite os números separados por vírgula:\n"
     )
 
-    analisador = AnalisadorCaracteristicas(dados)
+    dados = [
+        int(valor.strip())
+        for valor in entrada.split(",")
+    ]
 
-    caracteristicas = analisador.analisar()
+    return dados
+
+def main():
+
+    print("\nModo de operação:")
+    print("1 - Questionário")
+    print("2 - Modo Direto")
+
+    modo = input(
+        "\nEscolha uma opção: "
+    ).strip()
+
+    if modo == "2":
+
+        dados = ler_array_usuario()
+
+        analisador = AnalisadorCaracteristicas(
+            dados
+        )
+
+        caracteristicas = analisador.analisar()
+
+        requisitos = {
+            "quantidade_elementos":
+                caracteristicas["tamanho"],
+
+            "parcialmente_ordenado":
+                caracteristicas["grau_ordenacao"] >= 70,
+
+            "muitos_repetidos":
+                caracteristicas["duplicatas"] >= 20
+        }
+
+        requisitos.update(
+            obter_requisitos_direto()
+        )
+
+    else:
+
+        requisitos = obter_requisitos()
+
+        dados = gerar_aleatorio(
+            requisitos["quantidade_elementos"]
+        )
+
+        analisador = AnalisadorCaracteristicas(
+            dados
+        )
+
+        caracteristicas = analisador.analisar()
+
+    # print("=" * 50)
+    # print("SELETOR ADAPTATIVO DE ALGORITMOS")
+    # print("=" * 50)
+
+    # requisitos = obter_requisitos()
+
+    # dados = gerar_aleatorio(
+    #     requisitos["quantidade_elementos"]
+    # )
+
+    # analisador = AnalisadorCaracteristicas(dados)
+
+    # caracteristicas = analisador.analisar()
 
     print("\nCaracterísticas encontradas:")
 

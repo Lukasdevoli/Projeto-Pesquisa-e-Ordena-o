@@ -36,3 +36,23 @@ def obter_requisitos():
         "memoria_limitada": memoria == "s",
         "operacao": operacao
     }
+
+def obter_requisitos_direto():
+
+    estabilidade = input(
+        "Precisa de estabilidade? (s/n): "
+    ).lower()
+
+    memoria = input(
+        "Existe restrição de memória? (s/n): "
+    ).lower()
+
+    operacao = input(
+        "Operação (buscar/ordenar): "
+    ).lower()
+
+    return {
+        "estabilidade": estabilidade == "s",
+        "memoria_limitada": memoria == "s",
+        "operacao": operacao
+    }
