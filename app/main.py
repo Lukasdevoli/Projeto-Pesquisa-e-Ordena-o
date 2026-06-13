@@ -1,8 +1,8 @@
 from analizador.caracteristicas import AnalisadorCaracteristicas
 from analizador.questionario import obter_requisitos, obter_requisitos_direto
 from analizador.motor_decisao import MotorDecisao
-
 from utils.gerador import gerar_aleatorio
+from utils.complexidade import COMPLEXIDADES
 
 def exibir_ranking(scores):
 
@@ -167,54 +167,6 @@ def main():
         f"{caracteristicas['amplitude']}"
     )
 
-    COMPLEXIDADES = {
-
-        "Bubble Sort": {
-            "tempo": "O(n²)",
-            "espaco": "O(1)"
-        },
-
-        "Selection Sort": {
-            "tempo": "O(n²)",
-            "espaco": "O(1)"
-        },
-
-        "Insertion Sort": {
-            "tempo": "O(n²)",
-            "espaco": "O(1)"
-        },
-
-        "Merge Sort": {
-            "tempo": "O(n log n)",
-            "espaco": "O(n)"
-        },
-
-        "Quick Sort": {
-            "tempo": "O(n log n)",
-            "espaco": "O(log n)"
-        },
-
-        "Heap Sort": {
-            "tempo": "O(n log n)",
-            "espaco": "O(1)"
-        },
-
-        "Busca Sequencial": {
-            "tempo": "O(n)",
-            "espaco": "O(1)"
-        },
-
-        "Busca Binária": {
-            "tempo": "O(log n)",
-            "espaco": "O(1)"
-        },
-
-        "Busca Hash": {
-            "tempo": "O(1)",
-            "espaco": "O(n)"
-        }
-    }
-
     motor = MotorDecisao()
 
     algoritmo, scores = motor.recomendar(
@@ -266,14 +218,36 @@ def main():
         f"Pontuação final: {pontuacao_final}/100"
     )
 
+    print("\nANÁLISE DE COMPLEXIDADE")
+
     print(
-        f"Complexidade de Tempo: "
-        f"{complexidade['tempo']}"
+        f"Melhor Caso: "
+        f"{complexidade['melhor']}"
     )
 
     print(
-        f"Complexidade de Espaço: "
+        f"Caso Médio: "
+        f"{complexidade['medio']}"
+    )
+
+    print(
+        f"Pior Caso: "
+        f"{complexidade['pior']}"
+    )
+
+    print(
+        f"Uso de Memória: "
         f"{complexidade['espaco']}"
+    )
+
+    print(
+        f"Estabilidade: "
+        f"{complexidade['estavel']}"
+    )
+
+    print(
+        f"Comportamento: "
+        f"{complexidade['comportamento']}"
     )
 
     print("\nAlternativas possíveis:")
@@ -304,7 +278,6 @@ def main():
     else:
         print("Nenhum aviso relevante.")
 
-    print("\n")
     exibir_ranking(scores) 
 
 if __name__ == "__main__":
