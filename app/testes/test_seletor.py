@@ -1,6 +1,5 @@
 import unittest
 
-
 class TesteSeletor(unittest.TestCase):
 
     def test_basico(self):
@@ -9,7 +8,6 @@ class TesteSeletor(unittest.TestCase):
             2 + 2,
             4
         )
-
 
 if __name__ == "__main__":
     unittest.main()

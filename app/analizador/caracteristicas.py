@@ -2,15 +2,12 @@ import random
 
 class AnalisadorCaracteristicas:
 
-
     def __init__(self, dados):
         self.dados = dados
-
 
     def analisar_tamanho(self):
 
         return len(self.dados)
-
 
     def analisar_tipo(self):
 
@@ -19,14 +16,12 @@ class AnalisadorCaracteristicas:
 
         return type(self.dados[0]).__name__
 
-
     def analisar_amplitude(self):
 
         if not self.dados:
             return 0
 
         return max(self.dados) - min(self.dados)
-
 
     def analisar_duplicatas(self):
 
@@ -48,8 +43,7 @@ class AnalisadorCaracteristicas:
         if n < 2:
             return 100.0
 
-        # Arrays pequenos:
-        # conta todas as inversões
+        # Arrays pequenos: conta todas as inversões
         if n <= 1000:
 
             inversoes = 0
@@ -67,9 +61,7 @@ class AnalisadorCaracteristicas:
 
             return round(percentual, 2)
 
-        # Arrays grandes:
-        # usa amostragem aleatória
-
+        # Arrays grandes: usa amostragem aleatória
         amostras = min(10000, n * 2)
 
         inversoes = 0

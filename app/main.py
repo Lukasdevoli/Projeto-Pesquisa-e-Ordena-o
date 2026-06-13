@@ -47,7 +47,6 @@ def obter_justificativas(algoritmo, requisitos):
 
     return justificativas
 
-
 def obter_avisos(algoritmo, requisitos):
 
     avisos = []
@@ -140,20 +139,6 @@ def main():
         )
 
         caracteristicas = analisador.analisar()
-
-    # print("=" * 50)
-    # print("SELETOR ADAPTATIVO DE ALGORITMOS")
-    # print("=" * 50)
-
-    # requisitos = obter_requisitos()
-
-    # dados = gerar_aleatorio(
-    #     requisitos["quantidade_elementos"]
-    # )
-
-    # analisador = AnalisadorCaracteristicas(dados)
-
-    # caracteristicas = analisador.analisar()
 
     print("\nCaracterísticas encontradas:")
 
@@ -321,7 +306,6 @@ def main():
 
     print("\n")
     exibir_ranking(scores) 
-
 
 if __name__ == "__main__":
     main()

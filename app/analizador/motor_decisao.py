@@ -4,9 +4,7 @@ class MotorDecisao:
 
         operacao = requisitos["operacao"].lower()
 
-        # =====================
         # MODO BUSCA
-        # =====================
         if operacao == "buscar":
 
             scores = {
@@ -29,10 +27,7 @@ class MotorDecisao:
 
             return melhor, scores
 
-        # =====================
         # MODO ORDENAÇÃO
-        # =====================
-
         scores = {
             "Bubble Sort": 50,
             "Selection Sort": 50,
@@ -44,8 +39,7 @@ class MotorDecisao:
 
         tamanho = requisitos["quantidade_elementos"]
 
-        # Dataset muito grande:
-        # eliminar algoritmos O(n²)
+        # Dataset muito grande: eliminar algoritmos O(n²)
         if tamanho > 10000:
 
             scores["Bubble Sort"] = -999
@@ -64,17 +58,14 @@ class MotorDecisao:
             scores["Merge Sort"] += 20
             scores["Quick Sort"] += 20
 
-        # Array quase ordenado
         if requisitos["parcialmente_ordenado"]:
 
             scores["Insertion Sort"] += 35
 
-        # Muitos repetidos
         if requisitos["muitos_repetidos"]:
 
             scores["Merge Sort"] += 20
 
-        # Necessidade de estabilidade
         if requisitos["estabilidade"]:
 
             scores["Quick Sort"] -= 30
@@ -84,7 +75,6 @@ class MotorDecisao:
             scores["Merge Sort"] += 20
             scores["Insertion Sort"] += 20
 
-        # Restrição de memória
         if requisitos["memoria_limitada"]:
 
             scores["Heap Sort"] += 30

@@ -1,6 +1,5 @@
 import time
 
-
 class Benchmark:
 
     @staticmethod

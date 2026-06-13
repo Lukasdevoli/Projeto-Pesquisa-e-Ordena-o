@@ -1,3 +1,4 @@
+# Requisitos: Modo Questionario
 def obter_requisitos():
 
     print("\n===== QUESTIONÁRIO =====")
@@ -37,6 +38,7 @@ def obter_requisitos():
         "operacao": operacao
     }
 
+# Requisitos: Modo Direto
 def obter_requisitos_direto():
 
     estabilidade = input(
