@@ -18,6 +18,67 @@ def exibir_ranking(scores):
     for nome, score in ranking:
         print(f"{nome}: {score} pontos")
 
+def obter_justificativas(algoritmo, requisitos):
+
+    justificativas = []
+
+    if requisitos["parcialmente_ordenado"]:
+        justificativas.append(
+            "O conjunto de dados foi informado como parcialmente ordenado."
+        )
+
+    if requisitos["estabilidade"]:
+        justificativas.append(
+            "Foi indicada necessidade de estabilidade na ordenação."
+        )
+
+    if requisitos["memoria_limitada"]:
+        justificativas.append(
+            "Existe restrição de memória disponível."
+        )
+
+    if requisitos["muitos_repetidos"]:
+        justificativas.append(
+            "O conjunto possui muitos valores repetidos."
+        )
+
+    justificativas.append(
+        f"O algoritmo {algoritmo} recebeu a maior pontuação segundo as regras do motor de decisão."
+    )
+
+    return justificativas
+
+
+def obter_avisos(algoritmo, requisitos):
+
+    avisos = []
+
+    if algoritmo == "Merge Sort":
+        avisos.append(
+            "Merge Sort necessita memória auxiliar proporcional ao tamanho do dataset."
+        )
+
+    if algoritmo == "Quick Sort":
+        avisos.append(
+            "Quick Sort pode apresentar pior caso O(n²) dependendo da escolha do pivô."
+        )
+
+    if algoritmo == "Busca Binária":
+        avisos.append(
+            "Busca Binária exige que os dados estejam previamente ordenados."
+        )
+
+    if algoritmo == "Busca Hash":
+        avisos.append(
+            "Busca Hash exige estrutura de armazenamento adicional."
+        )
+    
+    if requisitos["quantidade_elementos"] > 10000:
+        avisos.append(
+            "Bubble Sort, Selection Sort e Insertion Sort foram eliminados por possuírem complexidade O(n²)."
+        )
+
+    return avisos
 
 def main():
 
@@ -117,6 +178,22 @@ def main():
         requisitos
     )
 
+    pontuacao_final = max(
+        0,
+        min(100, scores[algoritmo])
+    )
+
+    ranking = sorted(
+        scores.items(),
+        key=lambda item: item[1],
+        reverse=True
+    )
+
+    alternativas = [
+        nome
+        for nome, _ in ranking[1:4]
+    ]
+
     complexidade = COMPLEXIDADES.get(
         algoritmo,
         {
@@ -126,7 +203,7 @@ def main():
     )
 
     print("\n" + "=" * 50)
-    print("RESULTADO")
+    print("RELATÓRIO FINAL")
     print("=" * 50)
 
     print(
@@ -134,7 +211,15 @@ def main():
     )
 
     print(
-        f"Pontuação: {scores[algoritmo]}"
+        f"Pontuação obtida: {scores[algoritmo]}"
+    )
+
+    print(
+        f"Pontuação normalizada: {pontuacao_final}/100"
+    )
+
+    print(
+        f"Pontuação final: {pontuacao_final}/100"
     )
 
     print(
@@ -147,7 +232,36 @@ def main():
         f"{complexidade['espaco']}"
     )
 
-    exibir_ranking(scores)
+    print("\nAlternativas possíveis:")
+
+    for alternativa in alternativas:
+        print(f"- {alternativa}")
+
+    print("\nJustificativas:")
+
+    for justificativa in obter_justificativas(
+        algoritmo,
+        requisitos
+    ):
+        print(f"• {justificativa}")
+
+    print("\nAvisos importantes:")
+
+    avisos = obter_avisos(
+        algoritmo,
+        requisitos
+    )
+
+    if avisos:
+
+        for aviso in avisos:
+            print(f"⚠ {aviso}")
+
+    else:
+        print("Nenhum aviso relevante.")
+
+    print("\n")
+    exibir_ranking(scores) 
 
 
 if __name__ == "__main__":
