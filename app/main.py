@@ -110,10 +110,6 @@ def main():
         }
     }
 
-    # print("\nQuestionário:")
-
-    # requisitos = obter_requisitos()
-
     motor = MotorDecisao()
 
     algoritmo, scores = motor.recomendar(
