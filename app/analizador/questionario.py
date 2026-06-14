@@ -1,11 +1,11 @@
 # Requisitos: Modo Questionario
 def obter_requisitos():
 
-    print("\n===== QUESTIONÁRIO =====")
+    print("\n-+-+-+-+-+-+-+-+-+-+- QUESTIONÁRIO -+-+-+-+-+-+-+-+-+-+-")
 
     quantidade = int(
         input(
-            "Quantos elementos existem no conjunto de dados? "
+            "\nQuantos elementos existem no conjunto de dados? "
         )
     )
 
@@ -41,8 +41,10 @@ def obter_requisitos():
 # Requisitos: Modo Direto
 def obter_requisitos_direto():
 
+    print("\n-+-+-+-+-+-+-+-+-+-+- QUESTIONÁRIO -+-+-+-+-+-+-+-+-+-+-")
+
     estabilidade = input(
-        "Precisa de estabilidade? (s/n): "
+        "\nPrecisa de estabilidade? (s/n): "
     ).lower()
 
     memoria = input(

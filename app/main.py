@@ -25,7 +25,7 @@ ALGORITMOS_ORDENACAO = {
 
 def exibir_ranking(scores):
 
-    print("\n===== RANKING DOS ALGORITMOS =====")
+    print("\n-+-+-+-+-+-+-+-+-+-+- RANKING DOS ALGORITMOS -+-+-+-+-+-+-+-+-+-+-\n")
 
     ranking = sorted(
         scores.items(),
@@ -159,7 +159,7 @@ def main():
 
         caracteristicas = analisador.analisar()
 
-    print("\nCaracterísticas encontradas:")
+    print("\n----> CARACTERISTICAS ENCONTRADAS")
 
     print(
         f"Tamanho: "
@@ -226,9 +226,7 @@ def main():
         }
     )
 
-    print("\n" + "=" * 50)
-    print("RELATÓRIO FINAL")
-    print("=" * 50)
+    print("\n-+-+-+-+-+-+-+-+-+-+- RELATÓRIO FINAL -+-+-+-+-+-+-+-+-+-+-")
 
     print(
         f"\nAlgoritmo recomendado: {algoritmo}"
@@ -246,7 +244,7 @@ def main():
         f"Pontuação final: {pontuacao_final}/100"
     )
 
-    print("\nANÁLISE DE COMPLEXIDADE")
+    print("\n----> ANÁLISE DE COMPLEXIDADE")
 
     print(
         f"Melhor Caso: "
@@ -280,7 +278,7 @@ def main():
 
     if benchmark:
 
-        print("\nINSTRUMENTAÇÃO")
+        print("\n----> INSTRUMENTAÇÃO")
 
         print(
             f"Tempo de execução: "
@@ -294,12 +292,12 @@ def main():
                 f"{benchmark['memoria_pico_bytes']} bytes"
             )
 
-    print("\nAlternativas possíveis:")
+    print("\n----> ALTERNATIVAS POSSÍVEIS")
 
     for alternativa in alternativas:
-        print(f"- {alternativa}")
+        print(f"• {alternativa}")
 
-    print("\nJustificativas:")
+    print("\n----> JUSTIFICATIVAS")
 
     for justificativa in obter_justificativas(
         algoritmo,
@@ -307,7 +305,7 @@ def main():
     ):
         print(f"• {justificativa}")
 
-    print("\nAvisos importantes:")
+    print("\n----> AVISOS IMPORTANTES")
 
     avisos = obter_avisos(
         algoritmo,
