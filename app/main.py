@@ -2,7 +2,26 @@ from analizador.caracteristicas import AnalisadorCaracteristicas
 from analizador.questionario import obter_requisitos, obter_requisitos_direto
 from analizador.motor_decisao import MotorDecisao
 from utils.gerador import gerar_aleatorio
+from utils.benchmark import Benchmark
 from utils.complexidade import COMPLEXIDADES
+
+from algoritimos.ordenacao import (
+    bubble_sort,
+    selection_sort,
+    insertion_sort,
+    merge_sort,
+    quick_sort,
+    heap_sort
+)
+
+ALGORITMOS_ORDENACAO = {
+    "Bubble Sort": bubble_sort,
+    "Selection Sort": selection_sort,
+    "Insertion Sort": insertion_sort,
+    "Merge Sort": merge_sort,
+    "Quick Sort": quick_sort,
+    "Heap Sort": heap_sort
+}
 
 def exibir_ranking(scores):
 
@@ -174,6 +193,15 @@ def main():
         requisitos
     )
 
+    benchmark = None
+
+    if algoritmo in ALGORITMOS_ORDENACAO:
+
+        benchmark = Benchmark.medir(
+            ALGORITMOS_ORDENACAO[algoritmo],
+            dados
+        )
+
     pontuacao_final = max(
         0,
         min(100, scores[algoritmo])
@@ -249,6 +277,22 @@ def main():
         f"Comportamento: "
         f"{complexidade['comportamento']}"
     )
+
+    if benchmark:
+
+        print("\nINSTRUMENTAÇÃO")
+
+        print(
+            f"Tempo de execução: "
+            f"{benchmark['tempo']:.8f} segundos"
+        )
+
+        if "memoria_pico_bytes" in benchmark:
+
+            print(
+                f"Memória utilizada (pico): "
+                f"{benchmark['memoria_pico_bytes']} bytes"
+            )
 
     print("\nAlternativas possíveis:")
 
