@@ -1,10 +1,11 @@
+# Requisitos: Modo Questionario
 def obter_requisitos():
 
-    print("\n===== QUESTIONÁRIO =====")
+    print("\n-+-+-+-+-+-+-+-+-+-+- QUESTIONÁRIO -+-+-+-+-+-+-+-+-+-+-")
 
     quantidade = int(
         input(
-            "Quantos elementos existem no conjunto de dados? "
+            "\nQuantos elementos existem no conjunto de dados? "
         )
     )
 
@@ -32,6 +33,29 @@ def obter_requisitos():
         "quantidade_elementos": quantidade,
         "parcialmente_ordenado": parcialmente_ordenado == "s",
         "muitos_repetidos": muitos_repetidos == "s",
+        "estabilidade": estabilidade == "s",
+        "memoria_limitada": memoria == "s",
+        "operacao": operacao
+    }
+
+# Requisitos: Modo Direto
+def obter_requisitos_direto():
+
+    print("\n-+-+-+-+-+-+-+-+-+-+- QUESTIONÁRIO -+-+-+-+-+-+-+-+-+-+-")
+
+    estabilidade = input(
+        "\nPrecisa de estabilidade? (s/n): "
+    ).lower()
+
+    memoria = input(
+        "Existe restrição de memória? (s/n): "
+    ).lower()
+
+    operacao = input(
+        "Operação (buscar/ordenar): "
+    ).lower()
+
+    return {
         "estabilidade": estabilidade == "s",
         "memoria_limitada": memoria == "s",
         "operacao": operacao

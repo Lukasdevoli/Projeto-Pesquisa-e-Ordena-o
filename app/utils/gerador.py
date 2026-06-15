@@ -1,6 +1,5 @@
 import random
 
-
 def gerar_aleatorio(n):
 
     return [

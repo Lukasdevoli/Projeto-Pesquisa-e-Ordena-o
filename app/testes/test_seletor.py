@@ -1,13 +1,19 @@
 import unittest
 
+from validacao.validar_seletor import Validador
+
 
 class TesteSeletor(unittest.TestCase):
 
-    def test_basico(self):
+    def test_recomendacao_entre_top2(self):
 
-        self.assertEqual(
-            2 + 2,
-            4
+        validador = Validador()
+
+        taxa = validador.validar()
+
+        self.assertGreaterEqual(
+            taxa,
+            50
         )
 
 
