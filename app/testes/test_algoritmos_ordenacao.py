@@ -5,7 +5,7 @@ from app.algoritimos.ordenacao import (
 )
 from app.algoritimos.busca.binary_search import binary_search
 
-from typing import Callable, Dict, Tuple
+from typing import Callable, Dict
 
 class TestAlgoritmosOrdenacao(unittest.TestCase):
     """Verifica se cada algoritmo ordena corretamente"""
