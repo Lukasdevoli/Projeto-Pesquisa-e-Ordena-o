@@ -5,13 +5,14 @@ from app.algoritimos.ordenacao import (
 )
 from app.algoritimos.busca.binary_search import binary_search
 
+from typing import Callable, Dict, Tuple
 
 class TestAlgoritmosOrdenacao(unittest.TestCase):
     """Verifica se cada algoritmo ordena corretamente"""
     
     def setUp(self):
         """Executado antes de cada teste"""
-        self.algoritmos = {
+        self.algoritmos: Dict[str, Callable] = {
             "Bubble": bubble_sort,
             "Selection": selection_sort,
             "Insertion": insertion_sort,
@@ -85,7 +86,7 @@ class TestAlgoritmosOrdenacao(unittest.TestCase):
         ]
         
         # Bubble, Insertion, Merge sao estaveis
-        algoritmos_estaveis = {
+        algoritmos_estaveis: Dict[str, Callable] = {
             "Insertion": insertion_sort,
             "Merge": merge_sort,
             "Bubble": bubble_sort
@@ -101,7 +102,7 @@ class TestAlgoritmosOrdenacao(unittest.TestCase):
             self.assertEqual(
                 indices_do_5, 
                 [0, 2], 
-                f"{nome} não é estável! Índices dos 5s: {indices_do_5}, esperado: [0, 2]"
+                f"{nome} nao estável indices: {indices_do_5} esperado: [0, 2]"
             )
             
             # Verifica tambem os 3s
@@ -109,7 +110,7 @@ class TestAlgoritmosOrdenacao(unittest.TestCase):
             self.assertEqual(
                 indices_do_3,
                 [1, 3],
-                f"{nome} não é estável! Índices dos 3s: {indices_do_3}, esperado: [1, 3]"
+                f"{nome} nao estável indices: {indices_do_3} esperado: [1, 3]"
             )
 
 
