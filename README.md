@@ -210,9 +210,21 @@ python app/main.py
 ### Execução dos testes
 
 ```bash
-python -m unittest discover -s app/testes
-```
+# Testes de Corretude de Algoritmos
+python -m unittest app.testes.test_algoritmos_ordenacao -v
 
+# Testes do Motor de Decisão
+python -m unittest app.testes.test_motor_decisao -v
+
+# Testes do Analisador de Características
+python -m unittest app.testes.test_caracteristicas -v
+
+# Testes do Validador/Seletor
+python -m unittest app.testes.test_seletor -v
+
+# Descubra todos os testes na pasta
+python -m unittest discover -s app/testes -p "test_*.py" -v
+```
 ---
 
 ## 8. 🔄 Fluxo de Funcionamento

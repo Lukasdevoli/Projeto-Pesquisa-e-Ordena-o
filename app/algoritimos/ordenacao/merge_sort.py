@@ -10,54 +10,48 @@ def merge_sort(lista: list[int]) -> list[int]:
         list[int]:
             Lista ordenada em ordem crescente.
     """
+    
+    def _merge_sort_helper(arr, esquerda, direita):
+        """Ordena subarray in-place"""
+        if esquerda < direita:
+            meio = (esquerda + direita) // 2
+            
+            _merge_sort_helper(arr, esquerda, meio)
+            _merge_sort_helper(arr, meio + 1, direita)
+            
+            # Faz merge
+            _merge_inplace(arr, esquerda, meio, direita)
+    
+    def _merge_inplace(arr, esquerda, meio, direita):
 
-    # Caso base da recursão.
-    if len(lista) <= 1:
-        return lista
-
-    # Divide a lista em duas metades.
-    meio = len(lista) // 2
-
-    esquerda = merge_sort(lista[:meio])
-    direita = merge_sort(lista[meio:])
-
-    # Junta as duas metades ordenadas.
-    return merge(esquerda, direita)
-
-
-def merge(esquerda: list[int], direita: list[int]) -> list[int]:
-    """
-    Combina duas listas já ordenadas.
-
-    Args:
-        esquerda (list[int]):
-            Primeira metade ordenada.
-
-        direita (list[int]):
-            Segunda metade ordenada.
-
-    Returns:
-        list[int]:
-            Lista resultante ordenada.
-    """
-
-    resultado = []
-
-    i = 0
-    j = 0
-
-    # Compara os menores elementos de cada lista.
-    while i < len(esquerda) and j < len(direita):
-
-        if esquerda[i] < direita[j]:
-            resultado.append(esquerda[i])
+        # Cria cópia apenas da subarray 
+        esq_arr = arr[esquerda:meio + 1]
+        dir_arr = arr[meio + 1:direita + 1]
+        
+        i = j = 0
+        k = esquerda
+        
+        # faz merge das duas subarrays
+        while i < len(esq_arr) and j < len(dir_arr):
+            if esq_arr[i] <= dir_arr[j]:
+                arr[k] = esq_arr[i]
+                i += 1
+            else:
+                arr[k] = dir_arr[j]
+                j += 1
+            k += 1
+        
+        # add elementos restantes
+        while i < len(esq_arr):
+            arr[k] = esq_arr[i]
             i += 1
-        else:
-            resultado.append(direita[j])
+            k += 1
+        
+        while j < len(dir_arr):
+            arr[k] = dir_arr[j]
             j += 1
-
-    # Adiciona os elementos restantes.
-    resultado.extend(esquerda[i:])
-    resultado.extend(direita[j:])
-
+            k += 1
+    
+    resultado = lista.copy()
+    _merge_sort_helper(resultado, 0, len(resultado) - 1)
     return resultado
