@@ -1,0 +1,37 @@
+INSTRUÇÕES DE EXECUÇÃO
+====================================================================
+|   
+|   EXECUÇÃO DA APLICAÇÃO
+|   python app/main.py
+|   
+====================================================================
+|
+|   EXECUÇÃO DOS TESTES
+|   Testes de Corretude de Algoritmos
+|   python -m unittest app.testes.test_algoritmos_ordenacao -v
+=
+|   Testes do Motor de Decisão
+|   python -m unittest app.testes.test_motor_decisao -v
+=
+|   Testes do Analisador de Características
+|   python -m unittest app.testes.test_caracteristicas -v
+=
+|   Testes do Validador/Seletor
+|   python -m unittest app.testes.test_seletor -v
+=
+|   Descubra todos os testes na pasta
+|   python -m unittest discover -s app/testes -p "test_*.py" -v
+|
+====================================================================
+|
+|   VISUALIZAÇÃO DOS GRÁFICOS:
+|   - Executar o notebook analise_experimental.ipynb
+|
+====================================================================
+|   
+|   OBSERVAÇÕES: 
+|   - Instalar as bibliotecas pandas e metplotlib
+|   (pip install -r requirements.txt) 
+|   - Python 3.8 ou superior.
+|   
+====================================================================
