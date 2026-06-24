@@ -1,5 +1,10 @@
 # 🚀 Projeto: Pesquisa e Ordenação de Dados
 
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![Status](https://img.shields.io/badge/Status-Concluído-success)
+![Algorithms](https://img.shields.io/badge/Algorithms-Busca%20e%20Ordenação-orange)
+![License](https://img.shields.io/badge/Academic-Project-lightgrey)
+
 > Sistema interativo de recomendação de algoritmos para busca e ordenação, com foco em análise de desempenho, complexidade computacional e validação prática.
 
 ## 📌 Resumo rápido
@@ -17,8 +22,6 @@
 - Análise de complexidade temporal e espacial.
 - Validação prática do desempenho recomendado.
 
----
-
 ## 1. 🎯 Introdução
 
 Este projeto foi desenvolvido no contexto da disciplina de Pesquisa e Ordenação de Dados, com o objetivo de estudar e aplicar algoritmos de ordenação e busca em estruturas de dados, além de analisar critérios de escolha de algoritmos com base em características do conjunto de dados e requisitos do usuário.
@@ -30,8 +33,6 @@ A proposta central do sistema é fornecer um seletor adaptativo que recomenda, d
 - lógica de decisão para recomendação;
 - benchmark e validação empírica de desempenho.
 
----
-
 ## 2. 🎯 Objetivo do Projeto
 
 O projeto tem como objetivos principais:
@@ -40,8 +41,6 @@ O projeto tem como objetivos principais:
 2. comparar desempenho teórico e prático entre diferentes abordagens;
 3. desenvolver um sistema de recomendação baseado em heurísticas;
 4. demonstrar, de forma prática, a relação entre complexidade computacional e desempenho real.
-
----
 
 ## 3. 📚 Contexto Acadêmico
 
@@ -53,8 +52,6 @@ Este trabalho está inserido na área de algoritmos e estruturas de dados, com f
 - uso de métricas experimentais para validação.
 
 A implementação busca unir fundamentos teóricos de pesquisa operacional sobre algoritmos com uma aplicação interativa que facilita a compreensão dos conceitos estudados.
-
----
 
 ## 4. ⚙️ Funcionalidades
 
@@ -90,7 +87,46 @@ O projeto inclui recursos para medir desempenho, como:
 - comparação entre algoritmos;
 - validação empírica da recomendação.
 
----
+### 4.6 Instrumentação e Métricas
+
+O sistema possui mecanismos de instrumentação para coleta de métricas experimentais durante a execução dos algoritmos.
+
+Atualmente são monitorados:
+
+- tempo real de execução;
+- uso aproximado de memória;
+- ranking de desempenho entre algoritmos;
+- comparação entre desempenho teórico e desempenho observado.
+
+Essas métricas permitem confrontar a análise assintótica tradicional com resultados obtidos em cenários reais de execução.
+
+### 4.7 Modos de Operação
+
+O sistema pode operar em dois modos distintos:
+
+#### Modo Questionário
+
+O usuário informa características do problema através de perguntas guiadas.
+
+Exemplos:
+
+- quantidade de elementos;
+- necessidade de estabilidade;
+- existência de restrição de memória;
+- presença de valores repetidos;
+- tipo de operação (busca ou ordenação).
+
+#### Modo Direto
+
+O usuário fornece diretamente um array de entrada.
+
+O sistema realiza automaticamente:
+
+- análise de tamanho;
+- cálculo do grau de ordenação;
+- identificação de duplicatas;
+- análise de amplitude;
+- geração automática de recomendações.
 
 ## 5. 📁 Estrutura do Projeto
 
@@ -135,8 +171,6 @@ Projeto-Pesquisa-e-Ordena-o/
         ├── __init__.py
         └── validar_seletor.py
 ```
-
----
 
 ## 6. 🧩 Descrição dos Módulos
 
@@ -186,8 +220,6 @@ Contém a validação empírica do seletor, verificando se o algoritmo recomenda
 ### 6.7 app/testes
 Implementa testes automatizados para validar o comportamento esperado do sistema.
 
----
-
 ## 7. ▶️ Como Executar
 
 ### Requisitos
@@ -225,7 +257,6 @@ python -m unittest app.testes.test_seletor -v
 # Descubra todos os testes na pasta
 python -m unittest discover -s app/testes -p "test_*.py" -v
 ```
----
 
 ## 8. 🔄 Fluxo de Funcionamento
 
@@ -236,28 +267,69 @@ python -m unittest discover -s app/testes -p "test_*.py" -v
 5. O programa recomenda o algoritmo mais adequado.
 6. O sistema exibe um ranking e, quando aplicável, métricas de benchmark.
 
----
+## 9. 📊 Análise de Complexidade
 
-## 9. 📊 Considerações sobre Complexidade
+O projeto mantém uma base de conhecimento contendo informações teóricas sobre cada algoritmo implementado.
 
-O projeto utiliza conceitos clássicos de complexidade computacional, como:
+Para cada algoritmo são armazenadas:
 
-- O(1), O(log n), O(n), O(n log n) e O(n²);
-- custo de memória auxiliar;
-- estabilidade dos algoritmos;
-- comportamento em cenários de dados grandes ou parcialmente ordenados.
+- complexidade de melhor caso;
+- complexidade de caso médio;
+- complexidade de pior caso;
+- uso de memória;
+- estabilidade;
+- comportamento prático.
 
-Esses conceitos são fundamentais para justificar a recomendação feita pelo sistema.
+Essas informações são apresentadas no relatório final para justificar a recomendação realizada pelo sistema.
 
----
+### Exemplo
 
-## 10. ✅ Conclusão
+| Algoritmo | Melhor Caso | Caso Médio | Pior Caso |
+|------------|------------|------------|------------|
+| Insertion Sort | O(n) | O(n²) | O(n²) |
+| Merge Sort | O(n log n) | O(n log n) | O(n log n) |
+| Quick Sort | O(n log n) | O(n log n) | O(n²) |
+| Heap Sort | O(n log n) | O(n log n) | O(n log n) |
 
-Este projeto representa uma aplicação prática de teoria de algoritmos e estruturas de dados, combinando análise de desempenho, heurísticas de recomendação e validação empírica. Além de funcionar como ferramenta de apoio ao estudo, ele também evidencia como a escolha de um algoritmo pode variar conforme as características do problema e as restrições impostas pela aplicação.
 
----
+## 10. 🧪 Validação Empírica
 
-## 11. 🌱 Referência para Desenvolvimento Futuro
+Além da análise teórica, o projeto realiza validação experimental das recomendações produzidas pelo seletor adaptativo.
+
+O processo consiste em:
+
+1. gerar diferentes cenários de teste;
+2. executar todos os algoritmos aplicáveis;
+3. medir o tempo real de execução;
+4. construir um ranking experimental;
+5. comparar esse ranking com a recomendação realizada pelo motor de decisão.
+
+O objetivo é verificar se o algoritmo recomendado encontra-se entre os algoritmos mais eficientes observados experimentalmente.
+
+Essa abordagem permite avaliar a qualidade das heurísticas utilizadas pelo sistema.
+
+## 11. ⏱️ Benchmark Experimental
+
+O módulo de benchmark é responsável pela medição de desempenho dos algoritmos.
+
+As métricas coletadas incluem:
+
+- tempo de execução;
+- uso aproximado de memória;
+- desempenho relativo entre algoritmos.
+
+Os resultados podem ser utilizados para:
+
+- comparação entre algoritmos;
+- geração de gráficos;
+- análise acadêmica;
+- validação das recomendações do seletor.
+
+## 12. ✅ Conclusão
+
+Além da recomendação baseada em heurísticas, o sistema também incorpora benchmark experimental, instrumentação de desempenho e validação empírica, aproximando o comportamento observado da teoria clássica de análise de algoritmos.
+
+## 13. 🌱 Referência para Desenvolvimento Futuro
 
 Possíveis melhorias para o projeto incluem:
 
