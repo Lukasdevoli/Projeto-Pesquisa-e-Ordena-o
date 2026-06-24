@@ -1,0 +1,3 @@
+Intencionalmente vazio... 
+
+O projeto não possui dependencias externas, uma vez que é usado apenas módulos das bibliotecas nativas da linguagem.
